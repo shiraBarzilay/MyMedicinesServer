@@ -1,0 +1,143 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\projects\\MyMedicines\\ServerAPI\\ServerAPI\\ServerAPI.csproj": {}
+  },
+  "projects": {
+    "C:\\projects\\MyMedicines\\ServerAPI\\BL\\BL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\projects\\MyMedicines\\ServerAPI\\BL\\BL.csproj",
+        "projectName": "BL",
+        "projectPath": "C:\\projects\\MyMedicines\\ServerAPI\\BL\\BL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\projects\\MyMedicines\\ServerAPI\\Data\\Data.csproj": {
+                "projectPath": "C:\\projects\\MyMedicines\\ServerAPI\\Data\\Data.csproj"
+              },
+              "C:\\projects\\MyMedicines\\ServerAPI\\Models\\Models.csproj": {
+                "projectPath": "C:\\projects\\MyMedicines\\ServerAPI\\Models\\Models.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\projects\\MyMedicines\\ServerAPI\\Data\\Data.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\projects\\MyMedicines\\ServerAPI\\Data\\Data.csproj",
+        "projectName": "Data",
+        "projectPath": "C:\\projects\\MyMedicines\\ServerAPI\\Data\\Data.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\projects\\MyMedicines\\ServerAPI\\Models\\Models.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\projects\\MyMedicines\\ServerAPI\\Models\\Models.csproj",
+        "projectName": "Models",
+        "projectPath": "C:\\projects\\MyMedicines\\ServerAPI\\Models\\Models.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\projects\\MyMedicines\\ServerAPI\\ServerAPI\\ServerAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\projects\\MyMedicines\\ServerAPI\\ServerAPI\\ServerAPI.csproj",
+        "projectName": "ServerAPI",
+        "projectPath": "C:\\projects\\MyMedicines\\ServerAPI\\ServerAPI\\ServerAPI.csproj",
+        "packagesPath": "C:\\Users\\טיירי\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\MyMedicines\\ServerAPI\\ServerAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\טיירי\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://myget.org/F/aspnetwebstacknightly": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\projects\\MyMedicines\\ServerAPI\\BL\\BL.csproj": {
+                "projectPath": "C:\\projects\\MyMedicines\\ServerAPI\\BL\\BL.csproj"
+              },
+              "C:\\projects\\MyMedicines\\ServerAPI\\Models\\Models.csproj": {
+                "projectPath": "C:\\projects\\MyMedicines\\ServerAPI\\Models\\Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
