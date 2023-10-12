@@ -19,7 +19,7 @@ namespace BL.Converters
                 MedicineId = mtu.MedicineId,
                 Status = mtu.Status,
                 TakingDay = mtu.TakingDay,
-                TakingHour = mtu.TakingHour,
+                TakingHour = mtu.TakingHour?.TimeOfDay,
                 StartingDate = mtu.StartingDate,
                 LastUpdatedDate = mtu.LastUpdatedDate
             };

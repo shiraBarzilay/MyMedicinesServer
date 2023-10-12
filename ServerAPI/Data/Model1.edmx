@@ -52,6 +52,28 @@
           <Property Name="UserCity" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'MedicinesApp.dbo.GetMedicinesToUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GetMedicinesToUser">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="MedicineId" />
+            <PropertyRef Name="MedicineName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="MedicineId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="TakingHour" Type="time" Precision="7" />
+          <Property Name="TakingDay" Type="smallint" />
+          <Property Name="StartingDate" Type="date" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="MedicineName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MedicineDescription" Type="varchar(max)" />
+          <Property Name="MedicineImage" Type="nvarchar(max)" />
+          <Property Name="MedicineEnglishName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'MedicinesApp.dbo.GetRelevantEmailsForReminders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GetRelevantEmailsForReminders">
           <Key>
@@ -121,6 +143,22 @@ warning 6002: The table/view 'MedicinesApp.dbo.GetRelevantEmailsForReminders' do
           <EntitySet Name="MedicinesToUsersTbl" EntityType="Self.MedicinesToUsersTbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersTbl" EntityType="Self.UsersTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GetMedicinesToUser" EntityType="Self.GetMedicinesToUser" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GetMedicinesToUser].[Id] AS [Id], 
+    [GetMedicinesToUser].[UserId] AS [UserId], 
+    [GetMedicinesToUser].[MedicineId] AS [MedicineId], 
+    [GetMedicinesToUser].[Status] AS [Status], 
+    [GetMedicinesToUser].[TakingHour] AS [TakingHour], 
+    [GetMedicinesToUser].[TakingDay] AS [TakingDay], 
+    [GetMedicinesToUser].[StartingDate] AS [StartingDate], 
+    [GetMedicinesToUser].[LastUpdatedDate] AS [LastUpdatedDate], 
+    [GetMedicinesToUser].[MedicineName] AS [MedicineName], 
+    [GetMedicinesToUser].[MedicineDescription] AS [MedicineDescription], 
+    [GetMedicinesToUser].[MedicineImage] AS [MedicineImage], 
+    [GetMedicinesToUser].[MedicineEnglishName] AS [MedicineEnglishName]
+    FROM [dbo].[GetMedicinesToUser] AS [GetMedicinesToUser]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="GetRelevantEmailsForReminders" EntityType="Self.GetRelevantEmailsForReminders" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [GetRelevantEmailsForReminders].[UserEmail] AS [UserEmail], 
@@ -192,6 +230,26 @@ warning 6002: The table/view 'MedicinesApp.dbo.GetRelevantEmailsForReminders' do
           <Property Name="UserCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MedicinesToUsersTbls" Relationship="Self.FK_MedicinesToUsersTbl_UsersTbl" FromRole="UsersTbl" ToRole="MedicinesToUsersTbl" />
         </EntityType>
+        <EntityType Name="GetMedicinesToUser">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="MedicineId" />
+            <PropertyRef Name="MedicineName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="MedicineId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="TakingHour" Type="Time" Precision="7" />
+          <Property Name="TakingDay" Type="Int16" />
+          <Property Name="StartingDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="MedicineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MedicineDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MedicineImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MedicineEnglishName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="GetRelevantEmailsForReminder">
           <Key>
             <PropertyRef Name="UserEmail" />
@@ -229,6 +287,7 @@ warning 6002: The table/view 'MedicinesApp.dbo.GetRelevantEmailsForReminders' do
           <EntitySet Name="MedicinesToUsersTbls" EntityType="Self.MedicinesToUsersTbl" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="UsersTbls" EntityType="Self.UsersTbl" />
+          <EntitySet Name="GetMedicinesToUsers" EntityType="Self.GetMedicinesToUser" />
           <EntitySet Name="GetRelevantEmailsForReminders" EntityType="Self.GetRelevantEmailsForReminder" />
           <AssociationSet Name="FK_MedicinesToUsersTbl_MedicinesTbl" Association="Self.FK_MedicinesToUsersTbl_MedicinesTbl">
             <End Role="MedicinesTbl" EntitySet="MedicinesTbls" />
@@ -333,6 +392,24 @@ warning 6002: The table/view 'MedicinesApp.dbo.GetRelevantEmailsForReminders' do
                 <ScalarProperty Name="UserLastname" ColumnName="UserLastname" />
                 <ScalarProperty Name="UserBirthday" ColumnName="UserBirthday" />
                 <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GetMedicinesToUsers">
+            <EntityTypeMapping TypeName="MedicinesAppModel.GetMedicinesToUser">
+              <MappingFragment StoreEntitySet="GetMedicinesToUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TakingHour" ColumnName="TakingHour" />
+                <ScalarProperty Name="TakingDay" ColumnName="TakingDay" />
+                <ScalarProperty Name="StartingDate" ColumnName="StartingDate" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+                <ScalarProperty Name="MedicineDescription" ColumnName="MedicineDescription" />
+                <ScalarProperty Name="MedicineImage" ColumnName="MedicineImage" />
+                <ScalarProperty Name="MedicineEnglishName" ColumnName="MedicineEnglishName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

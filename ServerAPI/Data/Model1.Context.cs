@@ -31,6 +31,7 @@ namespace Data
         public virtual DbSet<MedicinesToUsersTbl> MedicinesToUsersTbls { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UsersTbl> UsersTbls { get; set; }
+        public virtual DbSet<GetMedicinesToUser> GetMedicinesToUsers { get; set; }
         public virtual DbSet<GetRelevantEmailsForReminder> GetRelevantEmailsForReminders { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

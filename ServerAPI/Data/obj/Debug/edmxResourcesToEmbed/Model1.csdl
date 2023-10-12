@@ -50,6 +50,26 @@
     <Property Name="UserCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="MedicinesToUsersTbls" Relationship="Self.FK_MedicinesToUsersTbl_UsersTbl" FromRole="UsersTbl" ToRole="MedicinesToUsersTbl" />
   </EntityType>
+  <EntityType Name="GetMedicinesToUser">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="MedicineId" />
+      <PropertyRef Name="MedicineName" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="MedicineId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="TakingHour" Type="Time" Precision="7" />
+    <Property Name="TakingDay" Type="Int16" />
+    <Property Name="StartingDate" Type="DateTime" Precision="0" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="MedicineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MedicineDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MedicineImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MedicineEnglishName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="GetRelevantEmailsForReminder">
     <Key>
       <PropertyRef Name="UserEmail" />
@@ -87,6 +107,7 @@
     <EntitySet Name="MedicinesToUsersTbls" EntityType="Self.MedicinesToUsersTbl" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="UsersTbls" EntityType="Self.UsersTbl" />
+    <EntitySet Name="GetMedicinesToUsers" EntityType="Self.GetMedicinesToUser" />
     <EntitySet Name="GetRelevantEmailsForReminders" EntityType="Self.GetRelevantEmailsForReminder" />
     <AssociationSet Name="FK_MedicinesToUsersTbl_MedicinesTbl" Association="Self.FK_MedicinesToUsersTbl_MedicinesTbl">
       <End Role="MedicinesTbl" EntitySet="MedicinesTbls" />

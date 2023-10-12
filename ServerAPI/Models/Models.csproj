@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetMedicinesToUserModel.cs" />
     <Compile Include="GetRelevantEmailsForReminder_Model.cs" />
     <Compile Include="MedicinesModel.cs" />
     <Compile Include="MedicinesToUsersModel.cs" />

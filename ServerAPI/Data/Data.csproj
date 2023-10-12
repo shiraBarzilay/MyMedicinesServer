@@ -106,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="GetMedicinesToUser.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetRelevantEmailsForReminder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

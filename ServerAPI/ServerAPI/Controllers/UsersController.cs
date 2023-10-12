@@ -28,7 +28,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public bool AddExistingMedicineToUser(MedicinesToUsersModel mtu)
+        public bool AddExistingMedicineToUser([FromBody] MedicinesToUsersModel mtu)
         {
             // add existing medicine to user
             return MedicinesToUsersBL.AddExistingMedicineToUser(mtu);
@@ -53,9 +53,15 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public bool UpdateMedicineToUser(int userId, int medicineId, short? takingDay = null, TimeSpan? takingHour = null, bool? status = null)
+        public bool UpdateMedicineToUser(int mtuId, short? takingDay = null, TimeSpan? takingHour = null, bool? status = null)
         {
-            return MedicinesToUsersBL.UpdateMedicineToUser(userId, medicineId, takingDay, takingHour, status);
+            return MedicinesToUsersBL.UpdateMedicineToUser(mtuId, takingDay, takingHour, status);
+        }
+
+        [HttpGet]
+        public List<GetMedicinesToUserModel> GetMedicinesToUser(int userId)
+        {
+            return MedicinesToUsersBL.GetMedicinesToUser(userId);
         }
     }
 }

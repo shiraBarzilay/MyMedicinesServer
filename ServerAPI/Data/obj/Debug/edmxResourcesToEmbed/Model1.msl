@@ -51,6 +51,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="GetMedicinesToUsers">
+      <EntityTypeMapping TypeName="MedicinesAppModel.GetMedicinesToUser">
+        <MappingFragment StoreEntitySet="GetMedicinesToUser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TakingHour" ColumnName="TakingHour" />
+          <ScalarProperty Name="TakingDay" ColumnName="TakingDay" />
+          <ScalarProperty Name="StartingDate" ColumnName="StartingDate" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+          <ScalarProperty Name="MedicineDescription" ColumnName="MedicineDescription" />
+          <ScalarProperty Name="MedicineImage" ColumnName="MedicineImage" />
+          <ScalarProperty Name="MedicineEnglishName" ColumnName="MedicineEnglishName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="GetRelevantEmailsForReminders">
       <EntityTypeMapping TypeName="MedicinesAppModel.GetRelevantEmailsForReminder">
         <MappingFragment StoreEntitySet="GetRelevantEmailsForReminders">

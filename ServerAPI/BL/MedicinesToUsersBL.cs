@@ -19,6 +19,7 @@ namespace BL
                     mtu.Status = true;
                     mtu.StartingDate = DateTime.Now;
                     mtu.LastUpdatedDate = DateTime.Now;
+                    mtu.TakingHour = mtu.TakingHour?.AddHours(2);
                     db.MedicinesToUsersTbls.Add(Converters.MedicinesToUsersConverter.Map(mtu));
                     db.SaveChanges();
                     return true;
@@ -29,13 +30,21 @@ namespace BL
                 }
             }
         }
-        public static bool UpdateMedicineToUser(int userId, int medicineId, short? takingDay = null, TimeSpan? takingHour = null, bool? status = null)
+        public static List<GetMedicinesToUserModel> GetMedicinesToUser(int userId)
+        {
+            using (MedicinesAppEntities db = new MedicinesAppEntities())
+            {
+                List<GetMedicinesToUser> mtus = db.GetMedicinesToUsers.ToList();
+                return Converters.GetMedicinesToUser_Converter.Map(mtus);
+            }
+        }
+        public static bool UpdateMedicineToUser(int mtuId, short? takingDay = null, TimeSpan? takingHour = null, bool? status = null)
         {
             using (MedicinesAppEntities db = new MedicinesAppEntities())
             {
                 try
                 {
-                    MedicinesToUsersTbl mtu = db.MedicinesToUsersTbls.FirstOrDefault(_mtu => _mtu.UserId == userId && _mtu.MedicineId == medicineId);
+                    MedicinesToUsersTbl mtu = db.MedicinesToUsersTbls.FirstOrDefault(_mtu => _mtu.Id == mtuId);
                     if (mtu != null)
                     {
                         if (takingDay != null)

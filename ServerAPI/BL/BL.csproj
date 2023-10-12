@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\GetMedicinesToUser_Converter.cs" />
     <Compile Include="Converters\GetRelevantEmailsForReminder_Converter.cs" />
     <Compile Include="Converters\MedicinesConverter.cs" />
     <Compile Include="Converters\MedicinesToUsersConverter.cs" />
