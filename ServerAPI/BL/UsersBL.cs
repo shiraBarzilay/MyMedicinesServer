@@ -19,8 +19,9 @@ namespace BL
                     UsersTbl matchUser = db.UsersTbls.FirstOrDefault(u => u.UserEmail == user.UserEmail);
                     if (matchUser == null)
                     {
-                        UsersTbl newUser = db.UsersTbls.Add(Converters.UsersConverter.Map(user));
+                        db.UsersTbls.Add(Converters.UsersConverter.Map(user));
                         db.SaveChanges();
+                        UsersTbl newUser = db.UsersTbls.FirstOrDefault(u => u.UserEmail == user.UserEmail && u.UserPassword == user.UserPassword);
                         return Converters.UsersConverter.Map(newUser);
                     }
                     return null;

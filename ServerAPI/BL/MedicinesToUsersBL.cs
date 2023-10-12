@@ -34,7 +34,7 @@ namespace BL
         {
             using (MedicinesAppEntities db = new MedicinesAppEntities())
             {
-                List<GetMedicinesToUser> mtus = db.GetMedicinesToUsers.ToList();
+                List<GetMedicinesToUser> mtus = db.GetMedicinesToUsers.Where(mtu => mtu.UserId == userId).ToList();
                 return Converters.GetMedicinesToUser_Converter.Map(mtus);
             }
         }
