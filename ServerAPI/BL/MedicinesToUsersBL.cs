@@ -17,14 +17,14 @@ namespace BL
                 try
                 {
                     mtu.Status = true;
-                    mtu.StartingDate = DateTime.Now;
-                    mtu.LastUpdatedDate = DateTime.Now;
+                    mtu.StartingDate = mtu.StartingDate ?? DateTime.Now;
+                    mtu.LastUpdatedDate = mtu.LastUpdatedDate ?? DateTime.Now;
                     mtu.TakingHour = mtu.TakingHour?.AddHours(2);
                     db.MedicinesToUsersTbls.Add(Converters.MedicinesToUsersConverter.Map(mtu));
                     db.SaveChanges();
                     return true;
                 }
-                catch
+                catch (Exception ex)
                 {
                     return false;
                 }
@@ -38,6 +38,28 @@ namespace BL
                 return Converters.GetMedicinesToUser_Converter.Map(mtus);
             }
         }
+        public static List<GetRelevantEmailsForReminder> GetEmailsForReminder()
+        {
+            using (MedicinesAppEntities db = new MedicinesAppEntities())
+            {
+                // TimeSpan t
+                DateTime currentDate = DateTime.Now;
+                // TimeSpan currentTime = TimeSpan.Now
+                List<GetMedicinesToUser> medicinesOnDate = db.GetMedicinesToUsers.Where(
+                    mtu => currentDate <= mtu.LastUpdatedDate && currentDate <= mtu.StartingDate
+                    // && mtu.TakingHour.Hours == currentDate.Hour +1
+                    ).ToList();
+                // return list of relevant emails
+                List<GetRelevantEmailsForReminder> usersToRemind = new List<GetRelevantEmailsForReminder>();
+                medicinesOnDate.ForEach((medicine) =>
+                {
+                    string userEmail = UsersBL.GetUserById(medicine.UserId)?.UserEmail;
+                    usersToRemind.Add(new GetRelevantEmailsForReminder(userEmail, medicine.TakingHour, medicine.MedicineName));
+                });
+                return usersToRemind;
+            }
+        }
+
         public static bool UpdateMedicineToUser(int mtuId, short? takingDay = null, TimeSpan? takingHour = null, bool? status = null)
         {
             using (MedicinesAppEntities db = new MedicinesAppEntities())

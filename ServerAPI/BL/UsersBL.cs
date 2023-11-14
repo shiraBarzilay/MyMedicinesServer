@@ -72,5 +72,21 @@ namespace BL
                 return Converters.GetRelevantEmailsForReminder_Converter.Map(db.GetRelevantEmailsForReminders.ToList());
             }
         }
+        public static UsersModel GetUserById(int userId)
+        {
+            using (MedicinesAppEntities db = new MedicinesAppEntities())
+            {
+                try
+                {
+                    UsersTbl user = db.UsersTbls.FirstOrDefault(u => u.UserId == userId);
+                    return Converters.UsersConverter.Map(user);
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
     }
 }

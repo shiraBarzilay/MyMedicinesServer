@@ -64,7 +64,23 @@ namespace BL
                 }
             }
         }
-
+        public static bool IsExistMedicine(string hebrewMedicineName,string englishMedicineName)
+        {
+            using (MedicinesAppEntities db = new MedicinesAppEntities())
+            {
+                try
+                {
+                    bool isExist = db.MedicinesTbls.Any(x=>x.MedicineEnglishName==englishMedicineName || x.MedicineName==hebrewMedicineName);
+                   
+                    return isExist;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        //בשביל לשמור תמונה
         public async static void SaveFile(IFormFile postedFile)
         {
             var filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,

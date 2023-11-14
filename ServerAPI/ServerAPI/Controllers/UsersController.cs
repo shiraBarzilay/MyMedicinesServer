@@ -39,7 +39,7 @@ namespace API.Controllers
         {
             return UsersBL.UpdatePasswordToUser(userId, password);
         }
-
+        //הוספת תרופה שלא קיימת ברשימה וגם מוסיף למשתמש 
         [HttpPost]
         public bool AddNewMedicineToUser(MedicinesToUsersModel mtu, string medicineName)
         {

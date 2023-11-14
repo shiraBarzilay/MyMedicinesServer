@@ -14,6 +14,13 @@ namespace Data
     
     public partial class GetRelevantEmailsForReminder
     {
+        public GetRelevantEmailsForReminder(string userEmail, TimeSpan? takingHour, string medicineName)
+        {
+            UserEmail = userEmail;
+            TakingHour = takingHour;
+            MedicineName = medicineName;
+        }
+
         public string UserEmail { get; set; }
         public Nullable<System.TimeSpan> TakingHour { get; set; }
         public string MedicineName { get; set; }

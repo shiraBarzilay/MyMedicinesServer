@@ -45,7 +45,9 @@ namespace API.Controllers
             // adding medicine
             var data = HttpContext.Request.Form["medicine"];
             MedicinesModel medicine = JsonSerializer.Deserialize<MedicinesModel>(data);
-            return MedicinesBL.AddMedicine(medicine);
+            if (!MedicinesBL.IsExistMedicine(medicine.MedicineName, medicine.MedicineEnglishName))
+                return MedicinesBL.AddMedicine(medicine);
+            else return 0;
         }
     }
 }
