@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data;
 using Models;
+using System.Data.Entity;
 
 namespace BL
 {
@@ -42,12 +43,13 @@ namespace BL
         {
             using (MedicinesAppEntities db = new MedicinesAppEntities())
             {
-                // TimeSpan t
                 DateTime currentDate = DateTime.Now;
-                // TimeSpan currentTime = TimeSpan.Now
-                List<GetMedicinesToUser> medicinesOnDate = db.GetMedicinesToUsers.Where(
-                    mtu => currentDate <= mtu.LastUpdatedDate && currentDate <= mtu.StartingDate
-                    // && mtu.TakingHour.Hours == currentDate.Hour +1
+                int hourAgo = currentDate.TimeOfDay.Hours + 1;
+                // filter the medicines on current date and next hour
+                List<GetMedicinesToUser> medicinesOnDate = db.GetMedicinesToUsers.Where(mtu =>
+                        DbFunctions.TruncateTime(currentDate) <= DbFunctions.TruncateTime(mtu.LastUpdatedDate)
+                        && DbFunctions.TruncateTime(currentDate) >= DbFunctions.TruncateTime(mtu.StartingDate)
+                        && mtu.TakingHour.Value.Hours == hourAgo
                     ).ToList();
                 // return list of relevant emails
                 List<GetRelevantEmailsForReminder> usersToRemind = new List<GetRelevantEmailsForReminder>();

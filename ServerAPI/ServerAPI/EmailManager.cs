@@ -24,7 +24,7 @@ namespace ServerAPI
             string from = "MyMedicines2023@gmail.com"; //From address    
             MailMessage message = new MailMessage(from, to);
 
-            string mailbody = "שלום, השעה: " + hour + ". הגיע הזמן לקחת " + medicineName + "! יום טוב:)";
+            string mailbody = " שלום, עליך לקחת " + medicineName + " בשעה " + hour + " יום טוב :) ";
             message.Subject = "מזכירים לך 🖐";
             message.Body = mailbody;
             message.BodyEncoding = Encoding.UTF8;
